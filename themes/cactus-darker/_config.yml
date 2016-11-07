@@ -1,0 +1,28 @@
+# projects_url: http://github.com/probberechts
+
+customize:
+    logo:
+        enabled: false
+        width: 50
+        height: 50
+        url: https://raw.githubusercontent.com/probberechts/cactus-dark/gh-pages/images/logo.png
+    favicon: /images/favicon.png # path to favicon
+    social_links:
+        github: http://github.com/kareniel
+        twitter: http://twitter.com/Jonathan_Dupre
+
+# RSS
+# rss: false
+
+# Plugins
+plugins:
+    disqus_shortname: kareniel
+    google_analytics: UA-73566907-1
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id: Jonathan_Dupre
+        google_plus:
