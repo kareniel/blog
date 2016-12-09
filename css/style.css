@@ -336,7 +336,7 @@
   color: color-grey;
 }
 .content hr {
-  border: 1px dashed #ccc;
+  border: 1px dashed #ddd;
 }
 .content strong {
   font-weight: bold;
@@ -368,7 +368,7 @@
 .content ul,
 .content ol,
 .content dl {
-  line-height: 1.725;
+  line-height: 2;
 }
 .content ul ul,
 .content ol ul,
@@ -393,21 +393,20 @@
 }
 html {
   height: 100%;
-  border-top: 2px solid #c9cacc;
+  border-top: 2px solid #fff;
+  font-size: 1em;
 }
 body {
-  color: #c9cacc;
-  background-color: #1d1f21;
-  font-size: 15px;
-  font-family: "Meslo LG";
-  font-weight: 400;
-  line-height: 1.725;
+  color: #fff;
+  background-color: #111;
+  font-size: 1.2em;
+  font-family: "Roboto";
+  font-weight: 300;
+  line-height: 2;
   text-rendering: geometricPrecision;
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
 }
 .content {
   flex: 1;
@@ -427,20 +426,29 @@ body {
 }
 .content a {
   text-decoration: none;
-  color: #c9cacc;
+  color: #fff;
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 5px, #c9cacc 5px, #c9cacc);
+  background-image: linear-gradient(transparent, transparent 5px, #fff 5px, #fff);
 }
 .content a:hover {
-  background-image: linear-gradient(transparent, transparent 4px, #d480aa 4px, #d480aa);
+  background-image: linear-gradient(transparent, transparent 4px, #00d4d4 4px, #00d4d4);
 }
 .content a.icon {
   background: none;
 }
 .content a.icon:hover {
-  color: #d480aa;
+  color: #00d4d4;
+}
+.content h1,
+.content .h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  font-family: $font-family-title;
 }
 .content h1 a,
 .content .h1 a,
@@ -463,7 +471,7 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 6px, #d480aa 6px, #d480aa);
+  background-image: linear-gradient(transparent, transparent 6px, #00d4d4 6px, #00d4d4);
 }
 .content h1,
 .content .h1 {
@@ -471,39 +479,35 @@ body {
   letter-spacing: 0.01em;
   font-size: 1rem;
   font-style: normal;
-  font-weight: 700;
-  color: #2bbc8a;
+  font-weight: 100;
+  color: #00d4d4;
   margin-top: 3rem;
   margin-bottom: 1rem;
   display: block;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
 }
 .content h2,
 .content .h2 {
   position: relative;
   font-size: 1rem;
-  font-weight: bold;
   text-transform: none;
   letter-spacing: normal;
   margin-top: 3rem;
   margin-bottom: 0.5rem;
-  color: #eee;
+  color: #fff;
   display: block;
 }
 .content h3 {
   font-size: 1rem;
-  font-weight: bold;
   text-decoration: underline;
-  color: #eee;
+  color: #fff;
 }
 .content h4,
 .content h5,
 .content h6 {
   font-size: 1rem;
   font-weight: normal;
-  color: #ccc;
-  border-bottom: 1px dashed #ccc;
+  color: #ddd;
+  border-bottom: 1px dashed #ddd;
   display: inline;
   text-decoration: none;
 }
@@ -554,10 +558,10 @@ body {
 #header .h1 {
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-style: normal;
-  font-weight: 700;
-  color: #2bbc8a;
+  font-weight: 300;
+  color: #00d4d4;
   margin-top: 0;
   margin-bottom: 0;
   -moz-osx-font-smoothing: grayscale;
@@ -572,7 +576,7 @@ body {
   letter-spacing: normal;
   margin-top: 0;
   margin-bottom: 0;
-  color: #eee;
+  color: #fff;
 }
 #header a {
   color: inherit;
@@ -616,8 +620,8 @@ body {
 }
 .post-list .post-item .meta {
   display: block;
-  font-size: 14px;
-  color: #666;
+  font-size: 0.8em;
+  color: #bbb;
   min-width: 100px;
   margin-right: 16px;
 }
@@ -643,8 +647,8 @@ article header .top-subtitle a {
   text-transform: uppercase;
   letter-spacing: 0.01em;
   font-style: normal;
-  font-weight: 700;
-  color: #2bbc8a;
+  font-weight: 300;
+  color: #00d4d4;
   margin-top: 0;
   margin-bottom: 0;
   display: block;
@@ -657,7 +661,7 @@ article header .top-subtitle a:hover {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 6px, #d480aa 6px, #d480aa);
+  background-image: linear-gradient(transparent, transparent 6px, #00d4d4 6px, #00d4d4);
 }
 article header .posttitle {
   margin-top: 0;
@@ -671,20 +675,20 @@ article header .meta {
   margin-bottom: 2rem;
 }
 article header .meta * {
-  color: #ccc;
+  color: #ddd;
   font-size: 0.85rem;
 }
 article header .author {
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-weight: 700;
+  font-weight: 600;
 }
 article header .postdate {
   display: inline;
 }
 article .content h2:before {
   content: "#";
-  color: #2bbc8a;
+  color: #00d4d4;
   position: absolute;
   left: -1rem;
   top: -4px;
@@ -803,7 +807,7 @@ article .content .caption {
   padding-top: 10px;
   padding-bottom: 10px;
   color: #666;
-  font-size: 11px;
+  font-size: 0.9em;
   max-width: 700px;
   width: 100%;
   margin: 0 auto 1rem auto;
@@ -830,10 +834,10 @@ article .content .caption {
 }
 #footer a {
   margin-right: 15px;
-  color: #666;
+  color: #bbb;
 }
 #footer a:hover {
-  color: #999;
+  color: #ddd;
 }
 #footer .footer-left {
   height: 20px;
