@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="My initial question was:
+
+how can I spawn a scuttlebot test network?
+
+But then I realized I actually knew nothing of the underlying structures. So instead of just asking my question directly on sbot I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Diving down the sbot rabbit hole (part 1)">
+<meta property="og:url" content="http://jonathandupre.com/down-the-sbot-rabbit-hole/index.html">
+<meta property="og:site_name" content="Jonathan's Blog">
+<meta property="og:description" content="My initial question was:
+
+how can I spawn a scuttlebot test network?
+
+But then I realized I actually knew nothing of the underlying structures. So instead of just asking my question directly on sbot I">
+<meta property="og:updated_time" content="2016-12-16T04:33:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Diving down the sbot rabbit hole (part 1)">
+<meta name="twitter:description" content="My initial question was:
+
+how can I spawn a scuttlebot test network?
+
+But then I realized I actually knew nothing of the underlying structures. So instead of just asking my question directly on sbot I">
+<meta name="twitter:creator" content="@Jonathan_Dupre">
+    
+    
+        <link rel="icon" type="image/png" href="/images/favicon.png" sizes="32x32" />
+    
+    <!-- title -->
+    <title>Diving down the sbot rabbit hole (part 1)</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link href='//fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,100,200,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="content post width mx-auto px2 my4">
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <span class="top-subtitle">
+          <a href="/archives">Writing</a>
+      </span>
+      
+    <h1 class="posttitle" itemprop="name headline">
+        Diving down the sbot rabbit hole (part 1)
+    </h1>
+
+
+
+      <div class="meta">
+          <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">Jonathan's Blog</span>
+          </span>
+          
+    <div class="postdate">
+        <time datetime="2016-12-16T04:31:00.000Z" itemprop="datePublished">2016-12-15</time>
+    </div>
+
+
+          
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dextech/">dextech</a>
+    </div>
+
+
+      </div>
+    </header>
+    
+
+    <div class="content" itemprop="articleBody">
+      <p>My initial question was:</p>
+<blockquote>
+<p>how can I spawn a scuttlebot test network?</p>
+</blockquote>
+<p>But then I realized I actually knew nothing of the underlying structures. So instead of just asking my question directly on sbot I started reading the code. Below are notes taken while acquainting myself with some of the modules.</p>
+<hr>
+<h3 id="mdmanifest-markdown-manifests-for-muxrpc-apis"><a href="#mdmanifest-markdown-manifests-for-muxrpc-apis" class="headerlink" title="mdmanifest: markdown manifests for muxrpc apis"></a>mdmanifest: markdown <em>manifests</em> for <em>muxrpc</em> apis</h3><ul>
+<li>manifest: dictionary of exposed methods</li>
+<li>lets you use title (‘#’s) in markdown to describe manifests, instead of, say, json.</li>
+<li>this is great because it allows you to write docs while designing an api, or vice-versa.</li>
+</ul>
+<h3 id="muxrpc-combined-rpc-and-multiplexing-with-pull-streams"><a href="#muxrpc-combined-rpc-and-multiplexing-with-pull-streams" class="headerlink" title="muxrpc: combined rpc and multiplexing, with pull-streams."></a>muxrpc: combined <em>rpc</em> and <em>multiplexing</em>, with <em>pull-streams</em>.</h3><ul>
+<li>rpc: call a method on another computer on a shared network</li>
+<li>multiplexing: when more than one protocol is carried over the same port</li>
+<li>pull-streams: are to straws what push streams are to pipes</li>
+<li><p>takes a manifest of methods in the shape:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &apos;method_name&apos;: &apos;type&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>where type is one of:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&apos;async&apos;,  // has a callback</div><div class="line">&apos;sync&apos;,   // returns a value</div><div class="line"></div><div class="line">&apos;source&apos;  // returns a source pull-stream (aka, readable)</div><div class="line">&apos;sink&apos;,   // returns a sink pull-stream (aka, writable)</div><div class="line">&apos;duplex&apos;, // returns a duplex pull-stream</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="chloride-bindings-to-libsodium-in-nodejs"><a href="#chloride-bindings-to-libsodium-in-nodejs" class="headerlink" title="chloride: bindings to libsodium in nodejs"></a>chloride: bindings to <strong>libsodium</strong> in nodejs</h3><ul>
+<li><a href="https://download.libsodium.org/doc/" target="_blank" rel="external">libsodium</a> : crypto library (c)</li>
+<li><code>crypto_sign_open()</code>: generate key pairs</li>
+</ul>
+<h3 id="some-more-pull-streams"><a href="#some-more-pull-streams" class="headerlink" title="some more pull-streams"></a>some more pull-streams</h3><ul>
+<li>pull-reader: pulls binary data</li>
+<li>pull-pushable: kindof a classic stream, but it’s still a pull-stream (!)</li>
+<li>pull-handshake: pull, push, pull, then duplex</li>
+<li>pull-box-stream: encrypt or decrypt every byte</li>
+</ul>
+<h3 id="secret-handshake-implements-a-secure-key-exchange-protocol-designed-with-capability-systems-in-mind"><a href="#secret-handshake-implements-a-secure-key-exchange-protocol-designed-with-capability-systems-in-mind" class="headerlink" title="secret-handshake: implements a secure key exchange protocol designed with capability systems in mind"></a>secret-handshake: implements a secure key exchange protocol designed with <strong>capability</strong> systems in mind</h3><ul>
+<li>capability: grants to the bearer the right to access a resource</li>
+<li>mutually authenticates client and server</li>
+<li>a peer is identified by it’s public key</li>
+<li><a href="http://dominictarr.github.io/secret-handshake-paper/shs.pdf" target="_blank" rel="external">Authenticated Key Exchange as a Capability System</a></li>
+</ul>
+<hr>
+<p><em>Next up: multiserver &amp; secret-stack</em></p>
+
+    </div>
+  </article>
+  
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+</div>
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2016 Jonathan&#39;s Blog
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/archives">Writing</a></li>
+        <!-- <li><a href="/">Projects</a></li> -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-73566907-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'kareniel';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
